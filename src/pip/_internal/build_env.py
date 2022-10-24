@@ -127,7 +127,7 @@ class BuildEnvironment:
                 # Second, add lib directories.
                 # ensuring .pth file are processed.
                 for path in {lib_dirs!r}:
-                    assert not path in sys.path
+                    assert not path in sys.path, '{path!r} is already in {syspath!r}'.format(path=path, syspath=sys.path)
                     site.addsitedir(path)
                 """
                 ).format(system_sites=system_sites, lib_dirs=self._lib_dirs)
